@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="WinUIHostingChromiumWebView.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUIHostingChromiumWebView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+
+    <StackPanel>
+      <TextBlock FontSize="28" Text="WinUI Controls" Margin="10"/>
+      <TextBox Header="FirstName from WinUI" Text="Thomas" x:Name="txtFirstName" Margin="10"/>
+      <Button Content="Update Blazor from WinUI" Click="ButtonSetFirstName_Click" Margin="10 0 10 10"/>
+    </StackPanel>
+
+    <TextBlock Grid.Row="1" FontSize="28" Text="WinUI Web View 2 with Blazor App" Margin="10 20 10 0"/>
+
+    <WebView2 Grid.Row="2" x:Name="webView2" Margin="10"></WebView2>
+  </Grid>
+</Page>

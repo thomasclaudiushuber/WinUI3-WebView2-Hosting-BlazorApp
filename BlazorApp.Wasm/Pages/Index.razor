@@ -1,0 +1,32 @@
+﻿@inject IJSRuntime JSRuntime;
+
+@page "/"
+
+<h1>Hello @firstName</h1>
+
+<div class="form-group">
+  <label>Firstname</label>
+  <input type="text" class="form-control" @bind="firstName" />
+</div>
+
+@code{
+
+  private string firstName = "Julia";
+
+  protected async override Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+      await JSRuntime.InvokeVoidAsync("interopFunctions.registerIndexComponent", DotNetObjectReference.Create(this));
+    }
+  }
+
+  [JSInvokable]
+  public void SetFirstName(string firstName)
+  {
+    Console.WriteLine("Blazor SetFirstName executed");
+
+    this.firstName = firstName;
+    StateHasChanged();
+  }
+}

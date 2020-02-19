@@ -9,3 +9,10 @@ interopFunctions.setFirstName = (firstName) => {
 
   interopFunctions.indexComponent.invokeMethodAsync('SetFirstName', firstName);
 };
+
+interopFunctions.setFirstNameInWinUI = (firstName) => {
+  window.chrome.webview.postMessage(JSON.stringify({
+    messageType: 'firstName',
+    value: firstName
+  }));
+};

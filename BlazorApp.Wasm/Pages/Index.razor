@@ -8,10 +8,16 @@
   <label>Firstname</label>
   <input type="text" class="form-control" @bind="firstName" />
 </div>
+<button class="btn btn-secondary" @onclick="SetFirstNameInWinUI">Update WinUI from Blazor</button>
 
 @code{
 
   private string firstName = "Julia";
+
+  private async Task SetFirstNameInWinUI()
+  {
+    await JSRuntime.InvokeVoidAsync("interopFunctions.setFirstNameInWinUI", firstName);
+  }
 
   protected async override Task OnAfterRenderAsync(bool firstRender)
   {
